@@ -41,9 +41,12 @@ def main(page: ft.Page):
     tipo = ft.TextField(label = "Tipo:")
     marca = ft.TextField(label = "Marca:")
     anno_acquisto = ft.TextField(label = "Anno di acquisto:")
+    removeIcon = ft.IconButton(icon = ft.Icons.REMOVE, on_click = remove_handler)
+    addIcon = ft.IconButton(icon = ft.Icons.ADD, on_click = add_handler)
+    contatore = ft.Textfield(value = 0, disabled = True, text_align = ft.TextAlign.CENTER)
 
 
-    #TODO Aggiungere CONTATORE
+
 
     # --- FUNZIONI APP ---
     def aggiorna_lista_strumenti():
@@ -56,6 +59,12 @@ def main(page: ft.Page):
     def cambia_tema(e):
         page.theme_mode = ft.ThemeMode.DARK if toggle_cambia_tema.value else ft.ThemeMode.LIGHT
         toggle_cambia_tema.label = "Tema scuro" if toggle_cambia_tema.value else "Tema chiaro"
+
+    def remove_handler():
+        pass
+
+    def add_handler():
+        pass
 
     def conferma_responsabile(e):
         deposito.set_responsabile(input_responsabile.value)
@@ -89,7 +98,7 @@ def main(page: ft.Page):
     pulsante_aggiungi_strumento = ft.Button("Aggiungi strumento", on_click = aggiungi_strumento)
 
     # --- LAYOUT ---
-    riga = ft.Row([tipo, marca, anno_acquisto, pulsante_aggiungi_strumento]) #TODO Aggiungere il valore
+    riga = ft.Row([tipo, marca, anno_acquisto, pulsante_aggiungi_strumento], alignment = ft.MainAxisAlignment.CENTER) #TODO Aggiungere il valore
     page.add(
         toggle_cambia_tema,
 
