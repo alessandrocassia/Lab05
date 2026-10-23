@@ -41,11 +41,6 @@ def main(page: ft.Page):
     tipo = ft.TextField(label = "Tipo:")
     marca = ft.TextField(label = "Marca:")
     anno_acquisto = ft.TextField(label = "Anno di acquisto:")
-    removeIcon = ft.IconButton(icon = ft.Icons.REMOVE, on_click = remove_handler)
-    addIcon = ft.IconButton(icon = ft.Icons.ADD, on_click = add_handler)
-    contatore = ft.Textfield(value = 0, disabled = True, text_align = ft.TextAlign.CENTER)
-
-
 
 
     # --- FUNZIONI APP ---
@@ -60,10 +55,10 @@ def main(page: ft.Page):
         page.theme_mode = ft.ThemeMode.DARK if toggle_cambia_tema.value else ft.ThemeMode.LIGHT
         toggle_cambia_tema.label = "Tema scuro" if toggle_cambia_tema.value else "Tema chiaro"
 
-    def remove_handler():
+    def remove_handler(e):
         pass
 
-    def add_handler():
+    def add_handler(e):
         pass
 
     def conferma_responsabile(e):
@@ -96,6 +91,10 @@ def main(page: ft.Page):
 
     # Pulsanti per la gestione dell'inserimento di un nuovo strumento
     pulsante_aggiungi_strumento = ft.Button("Aggiungi strumento", on_click = aggiungi_strumento)
+
+    removeIcon = ft.IconButton(icon=ft.Icons.REMOVE, on_click=remove_handler)
+    addIcon = ft.IconButton(icon=ft.Icons.ADD, on_click=add_handler)
+    contatore = ft.Textfield(value=0, disabled=True, text_align=ft.TextAlign.CENTER)
 
     # --- LAYOUT ---
     riga = ft.Row([tipo, marca, anno_acquisto, pulsante_aggiungi_strumento], alignment = ft.MainAxisAlignment.CENTER) #TODO Aggiungere il valore
