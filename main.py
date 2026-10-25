@@ -56,10 +56,18 @@ def main(page: ft.Page):
         toggle_cambia_tema.label = "Tema scuro" if toggle_cambia_tema.value else "Tema chiaro"
 
     def remove_handler(e):
-        pass
+        val = contatore.value
+        val = float(val)
+        val = val -1
+        contatore.value = str(val)
+        page.update()
 
     def add_handler(e):
-        pass
+        val = contatore.value
+        val = float(val)
+        val = val +1
+        contatore.value = str(val)
+        page.update()
 
     def conferma_responsabile(e):
         deposito.set_responsabile(input_responsabile.value)
@@ -70,11 +78,12 @@ def main(page: ft.Page):
         try:
             anno = int(anno_acquisto.value)
 
-            deposito.aggiungi_strumento(tipo.value, marca.value, anno, 0) #TODO aggiornare 0 con il valore
+            deposito.aggiungi_strumento(tipo.value, marca.value, anno, float(contatore.value))
 
             tipo.value = ""
             marca.value = ""
             anno_acquisto.value = ""
+            contatore.value = 0
 
             aggiorna_lista_strumenti()
             page.update()
@@ -94,10 +103,11 @@ def main(page: ft.Page):
 
     removeIcon = ft.IconButton(icon=ft.Icons.REMOVE, on_click=remove_handler)
     addIcon = ft.IconButton(icon=ft.Icons.ADD, on_click=add_handler)
-    contatore = ft.Textfield(value=0, disabled=True, text_align=ft.TextAlign.CENTER)
+    contatore = ft.TextField(value=0, disabled=True, text_align=ft.TextAlign.CENTER, width = 60)
 
     # --- LAYOUT ---
-    riga = ft.Row([tipo, marca, anno_acquisto, pulsante_aggiungi_strumento], alignment = ft.MainAxisAlignment.CENTER) #TODO Aggiungere il valore
+    riga = ft.Row([tipo, marca, anno_acquisto, removeIcon, contatore, addIcon, pulsante_aggiungi_strumento],
+                  alignment = ft.MainAxisAlignment.CENTER)
     page.add(
         toggle_cambia_tema,
 
