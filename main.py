@@ -101,8 +101,8 @@ def main(page: ft.Page):
     # Pulsanti per la gestione dell'inserimento di un nuovo strumento
     pulsante_aggiungi_strumento = ft.Button("Aggiungi strumento", on_click = aggiungi_strumento)
 
-    removeIcon = ft.IconButton(icon=ft.Icons.REMOVE, on_click=remove_handler)
-    addIcon = ft.IconButton(icon=ft.Icons.ADD, on_click=add_handler)
+    removeIcon = ft.IconButton(icon=ft.Icons.REMOVE, on_click=remove_handler, icon_color = "red")
+    addIcon = ft.IconButton(icon=ft.Icons.ADD, on_click=add_handler, icon_color = "green")
     contatore = ft.TextField(value=0, disabled=True, text_align=ft.TextAlign.CENTER, width = 60)
 
     # --- LAYOUT ---
